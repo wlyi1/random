@@ -41,11 +41,11 @@ st.markdown("----", unsafe_allow_html=True)
 
 hari = dt.today().strftime('%Y-%m-%d')
 
-#font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
+font = ImageFont.truetype('https://raw.githubusercontent.com/wlyi1/random/main/Random/Quicksand-Regular.ttf', 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
 img= ImageDraw.Draw(image3)
-img.text((80,470), today_rand, fill=(0,0,0))
+img.text((80,470), today_rand, font=font, fill=(0,0,0))
 img.text((450,390), hari, fill=(0,0,0))
 
 if st.button('Show'):
