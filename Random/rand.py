@@ -10,13 +10,11 @@ from io import BytesIO
 import requests
 
 
-req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/blob/main/Random/a2.png'
-resp1 = requests.get(req_img_1)
-image1 = ![img1](./a2.png)
+req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a2.png'
 #image1 = Image.open('a2.png')
 #image2 = Image.open('a3a.png')
 
-st.image(image1)
+st.image(req_img_1)
 #st.image(image2)
 
 list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
