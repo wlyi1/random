@@ -51,7 +51,7 @@ img.text((450,390), hari, fill=(0,0,0))
     #image = image.save(f'myimage{n}.png')
     #n += 1
 
-with open(image2, "rb") as file:
+with open(req_img_1, "rb") as file:
      btn = st.download_button(
              label="Download image",
              data=file,
