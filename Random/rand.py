@@ -13,13 +13,13 @@ import urllib.request
 #response = requests.get(url)
 #img = Image.open(BytesIO(response.content))
 
-#resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
+resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/dw.png')
 #image1 = Image.open('a2.png')
-#image2 = Image.open(BytesIO(resp.content))
+image3 = Image.open(BytesIO(resp.content))
 
 image1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a2.png'
 image2 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a3a.png'
-image3 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/dw.png'
+#image3 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/dw.png'
 image4 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/1.png'
 image5 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/2.png'
 
