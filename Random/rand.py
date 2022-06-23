@@ -35,7 +35,6 @@ st.markdown("----", unsafe_allow_html=True)
 
 hari = dt.today().strftime('%Y-%m-%d')
 
-image = Image.open('rand.png')
 #font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
