@@ -29,7 +29,7 @@ st.markdown("----", unsafe_allow_html=True)
 
 #download page
 
-#hari = dt.today().strftime('%Y-%m-%d')
+hari = dt.today().strftime('%Y-%m-%d')
 
 #image = Image.open('dw.png')
 #font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
@@ -48,13 +48,7 @@ st.markdown("----", unsafe_allow_html=True)
     #image = image.save(f'myimage{n}.png')
     #n += 1
 
-#with open(f"myimage{n-1}.png", "rb") as file:
-     #btn = st.download_button(
-             #label="Download image",
-             #data=file,
-             #file_name=f"{hari}.png",
-             #mime="image/png"
-           #)
+btn = st.download_button(label="Download image", data=req_img_1, file_name=f"{hari}.png", mime="image/png")
 
 
 
