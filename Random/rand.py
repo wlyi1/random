@@ -32,15 +32,15 @@ st.markdown("----", unsafe_allow_html=True)
 hari = dt.today().strftime('%Y-%m-%d')
 
 #image = Image.open('dw.png')
-font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
+#font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
 #list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
 #text = random.choice(list_rand)
 
 img= ImageDraw.Draw(req_img_1)
-img.text((80,470), text, font = font, fill=(0,0,0))
-img.text((450,390), hari, font = font1, fill=(0,0,0))
+img.text((80,470), today_rand, fill=(0,0,0))
+img.text((450,390), hari, fill=(0,0,0))
 
 #total_img = [x for x in range(1000)]
 #n = 0
