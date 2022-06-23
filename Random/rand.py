@@ -44,8 +44,8 @@ st.markdown("----", unsafe_allow_html=True)
 #download page
 
 hari = dt.today().strftime('%Y-%m-%d')
-
-font = ImageFont.truetype(_font_as_bytes(), 55)
+path_font = "Random/Quicksand-Regular.ttf"
+font = ImageFont.truetype(path_font, 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
 img= ImageDraw.Draw(image3)
