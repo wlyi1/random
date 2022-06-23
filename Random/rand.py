@@ -13,14 +13,19 @@ import urllib.request
 #response = requests.get(url)
 #img = Image.open(BytesIO(response.content))
 
-resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
-req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png'
-
+#resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
 #image1 = Image.open('a2.png')
-image2 = Image.open(BytesIO(resp.content))
+#image2 = Image.open(BytesIO(resp.content))
 
-st.image(req_img_1)
+image1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a2.png'
+image2 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a3a.png'
+image3 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/dw.png'
+image4 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/1.png'
+image5 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/2.png'
+
+st.image(image1)
 st.image(image2)
+
 
 list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
 today_rand = random.choice(list_rand)
@@ -39,20 +44,17 @@ hari = dt.today().strftime('%Y-%m-%d')
 #font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
-#list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
-#text = random.choice(list_rand)
-
-img= ImageDraw.Draw(image2)
+img= ImageDraw.Draw(image3)
 img.text((80,470), today_rand, fill=(0,0,0))
 img.text((450,390), hari, fill=(0,0,0))
 
-#total_img = [x for x in range(1000)]
-#n = 0
-#if n < 1000:
-    #image = image.save(f'myimage{n}.png')
-    #n += 1
+if st.button('Show'):
+    st.image(image3)
 
-st.image(image2)
+st.markdown("----", unsafe_allow_html=True)
+    
+st.image(image4)
+st.image(image5)
 
 hide_streamlit_style = """
             <style>
