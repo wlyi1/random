@@ -10,6 +10,10 @@ from io import BytesIO
 import requests
 import urllib.request
 
+def _font_as_bytes():
+    with open('https://raw.githubusercontent.com/wlyi1/random/main/Random/Quicksand-Regular.ttf', 'rb') as f:
+        font_bytes = BytesIO(f.read())
+    return font_bytes
 #response = requests.get(url)
 #img = Image.open(BytesIO(response.content))
 
@@ -41,7 +45,7 @@ st.markdown("----", unsafe_allow_html=True)
 
 hari = dt.today().strftime('%Y-%m-%d')
 
-font = ImageFont.truetype('https://raw.githubusercontent.com/wlyi1/random/main/Random/Quicksand-Regular.ttf', 55)
+font = ImageFont.truetype(_font_as_bytes(), 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
 img= ImageDraw.Draw(image3)
