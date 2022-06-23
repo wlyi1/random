@@ -10,10 +10,13 @@ from io import BytesIO
 import requests
 import urllib.request
 
-urllib.request.urlretrieve('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
+#response = requests.get(url)
+#img = Image.open(BytesIO(response.content))
+
+resp = request.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
 req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png'
 #image1 = Image.open('a2.png')
-image2 = Image.open('rand.png')
+image2 = Image.open(BytesIO(resp.content)
 
 st.image(req_img_1)
 st.image(image2)
@@ -39,7 +42,7 @@ image = Image.open('rand.png')
 #list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
 #text = random.choice(list_rand)
 
-img= ImageDraw.Draw(image)
+img= ImageDraw.Draw(image2)
 img.text((80,470), today_rand, fill=(0,0,0))
 img.text((450,390), hari, fill=(0,0,0))
 
@@ -49,7 +52,7 @@ img.text((450,390), hari, fill=(0,0,0))
     #image = image.save(f'myimage{n}.png')
     #n += 1
 
-with open(image, "rb") as file:
+with open(image2, "rb") as file:
      btn = st.download_button(
              label="Download image",
              data=file,
