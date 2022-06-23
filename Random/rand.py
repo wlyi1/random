@@ -8,14 +8,15 @@ import datetime
 from datetime import datetime as dt
 from io import BytesIO
 import requests
+import urllib.request
 
-
+urllib.request.urlretrieve('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
 req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png'
 #image1 = Image.open('a2.png')
-#image2 = Image.open('a3a.png')
+image2 = Image.open('rand.png')
 
 st.image(req_img_1)
-#st.image(image2)
+st.image(image2)
 
 list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
 today_rand = random.choice(list_rand)
@@ -31,14 +32,14 @@ st.markdown("----", unsafe_allow_html=True)
 
 hari = dt.today().strftime('%Y-%m-%d')
 
-#image = Image.open('dw.png')
+image = Image.open('rand.png')
 #font = ImageFont.truetype('Quicksand-Regular.ttf', 55)
 #font1 = ImageFont.truetype('Quicksand-Bold.ttf', 28)
 
 #list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
 #text = random.choice(list_rand)
 
-img= ImageDraw.Draw(req_img_1)
+img= ImageDraw.Draw(image)
 img.text((80,470), today_rand, fill=(0,0,0))
 img.text((450,390), hari, fill=(0,0,0))
 
@@ -48,7 +49,7 @@ img.text((450,390), hari, fill=(0,0,0))
     #image = image.save(f'myimage{n}.png')
     #n += 1
 
-with open(req_img_1, "rb") as file:
+with open(image, "rb") as file:
      btn = st.download_button(
              label="Download image",
              data=file,
