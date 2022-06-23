@@ -15,6 +15,7 @@ import urllib.request
 
 resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
 req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png'
+
 #image1 = Image.open('a2.png')
 image2 = Image.open(BytesIO(resp.content))
 
@@ -51,14 +52,7 @@ img.text((450,390), hari, fill=(0,0,0))
     #image = image.save(f'myimage{n}.png')
     #n += 1
 
-with open(req_img_1, "rb") as file:
-     btn = st.download_button(
-             label="Download image",
-             data=file,
-             file_name="flower.png",
-             mime="image/png"
-           )
-
+st.image(image2)
 
 hide_streamlit_style = """
             <style>
