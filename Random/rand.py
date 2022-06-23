@@ -13,7 +13,7 @@ import urllib.request
 #response = requests.get(url)
 #img = Image.open(BytesIO(response.content))
 
-resp = request.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
+resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png')
 req_img_1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/rand.png'
 #image1 = Image.open('a2.png')
 image2 = Image.open(BytesIO(resp.content))
