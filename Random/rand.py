@@ -62,10 +62,10 @@ st.write('randoms.csv')
 if button_pressed:
     st.image(image3)
     List = get_data_input()
-    List.append(tgl_random, today_rand)
-    with open('event.csv', 'a') as f_object:
+    #List.append(tgl_random, today_rand)
+    with open('randoms.csv', 'a') as f_object:
          writer_object = writer(f_object)
-         writer_object.writerow(List)
+         writer_object.writerow(tgl_random, today_rand, '1', '2')
          f_object.close()
 
 
