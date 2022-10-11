@@ -62,11 +62,11 @@ if button_pressed:
     st.image(image3)
     get_data_input().append({'Tanggal Random': tgl_random, 'Random':today_rand})
     rand = pd.DataFrame(get_data_input())
-    rand.tail(1).to_csv('random.csv', mode='a', index = False, header = True)
+    rand.tail(1).to_csv('rando.csv', mode='a', index = False, header = True)
 
 st.markdown("----", unsafe_allow_html=True)
 
-df1 = pd.read_csv('random.csv')
+df1 = pd.read_csv('rando.csv')
 df = pd.DataFrame(df1)
 st.write(df)
 #df.columns = ['Tanggal', 'Random']
