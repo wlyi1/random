@@ -63,7 +63,7 @@ if button_pressed:
     rand.tail(1).to_csv('rand2.csv', mode='a', index = False, header = False)
 
 st.markdown("----", unsafe_allow_html=True)
-df = pd.read_csv('rand2.csv', names=['Tanggal', 'Random'])
+#df = pd.read_csv('rand2.csv', names=['Tanggal', 'Random'])
 
 st.header('3 Aktivitas Random Terakhir')
 st.caption('tiga list random oleh 3 pengunjung terakhir di RandomKu')
