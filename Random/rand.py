@@ -37,9 +37,7 @@ today_rand = random.choice(list_rand)
 st.markdown("----", unsafe_allow_html=True)
 columns = st.columns((2, 1, 2))
 button_pressed = columns[1].button('Random Me!')
-if button_pressed:
-    st.write(today_rand)
-st.markdown("----", unsafe_allow_html=True)
+
 
 #download page
 
@@ -53,18 +51,22 @@ img= ImageDraw.Draw(image3)
 img.text((80,470), today_rand, font=font, fill=(0,0,0))
 img.text((450,390), hari, font=font1, fill=(0,0,0))
 
-if st.button('Show'):
+if button_pressed:
     st.image(image3)
+st.markdown("----", unsafe_allow_html=True)
+
+#if st.button('Show'):
+    #st.image(image3)
 
 st.markdown("----", unsafe_allow_html=True)
     
-st.image(image4)
+#st.image(image4)
 st.text(" ")
 st.text(" ")
 st.text(" ")
 st.text(" ")
 st.text(" ")
-st.image(image5)
+#st.image(image5)
 
 hide_streamlit_style = """
             <style>
