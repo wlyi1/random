@@ -63,7 +63,8 @@ if button_pressed:
     rand.tail(1).to_csv('rand1.csv', mode='a', index = False, header = False)
 
 st.markdown("----", unsafe_allow_html=True)
-
+df = pd.read_csv('rand1.csv')
+st.write(df)
     
 hide_streamlit_style = """
             <style>
