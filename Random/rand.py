@@ -40,6 +40,11 @@ button_pressed = columns[1].button('Random Me!')
 
 
 #download page
+@st.cache(allow_output_mutation=True)
+def get_data_input():
+    return[]
+
+tgl_random = datetime.datetime.now()
 
 hari = dt.today().strftime('%Y-%m-%d')
 path_font = "Random/Quicksand-Regular.ttf"
@@ -53,21 +58,13 @@ img.text((450,390), hari, font=font1, fill=(0,0,0))
 
 if button_pressed:
     st.image(image3)
+    get_data_input().append({'Tanggal Random': tgl_random, 'Random':today_rand})
+    rand = pd.DataFrame(get_data_input())
+    rand.tail(1).to_csv('rand1.csv', mode='a', index = False, header = False)
+
 st.markdown("----", unsafe_allow_html=True)
 
-#if st.button('Show'):
-    #st.image(image3)
-
-st.markdown("----", unsafe_allow_html=True)
     
-#st.image(image4)
-st.text(" ")
-st.text(" ")
-st.text(" ")
-st.text(" ")
-st.text(" ")
-#st.image(image5)
-
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
