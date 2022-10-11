@@ -3,6 +3,11 @@ import streamlit as st
 import pandas as pd
 import os
 
+con = sqlite3.connect("rd1.db")
+df = pd.read_sql_query("SELECT * from randomk1", con)
+st.write(df)
+
+con.close()
 
 def create_connection(db_file):
     """ create a database connection to the SQLite database
