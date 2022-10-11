@@ -80,9 +80,9 @@ def run_query():
             st.write(e)
 
     st.sidebar.markdown("# Run Query")
-
+#"Create Database": create_database,
 page_names_to_funcs = {
-    "Create Database": create_database,
+    
     "Upload Data": upload_data,
     "Run Query": run_query,
 }
