@@ -58,7 +58,7 @@ img.text((80,470), today_rand, font=font, fill=(0,0,0))
 img.text((450,390), hari, font=font1, fill=(0,0,0))
 
 data ='https://raw.githubusercontent.com/wlyi1/random/main/Random/rand1.csv'
-st.write(randoms.csv')
+st.write('randoms.csv')
 if button_pressed:
     st.image(image3)
     List = get_data_input().append(tgl_random, today_rand)
