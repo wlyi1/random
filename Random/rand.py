@@ -56,14 +56,16 @@ img= ImageDraw.Draw(image3)
 img.text((80,470), today_rand, font=font, fill=(0,0,0))
 img.text((450,390), hari, font=font1, fill=(0,0,0))
 
+data ='https://raw.githubusercontent.com/wlyi1/random/main/Random/rand1.csv'
+
 if button_pressed:
     st.image(image3)
     get_data_input().append({'Tanggal Random': tgl_random, 'Random':today_rand})
     rand = pd.DataFrame(get_data_input())
-    rand.tail(1).to_csv('rand1.csv', mode='a', index = False, header = False)
+    rand.tail(1).to_csv(data, mode='a', index = False, header = False)
 
 st.markdown("----", unsafe_allow_html=True)
-data ='https://raw.githubusercontent.com/wlyi1/random/main/Random/rand1.csv'
+
 df = pd.read_csv(data, names=['Tanggal', 'Random'])
 
 st.header('3 Aktivitas Random Terakhir')
