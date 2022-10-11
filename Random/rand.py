@@ -60,10 +60,10 @@ if button_pressed:
     st.image(image3)
     get_data_input().append({'Tanggal Random': tgl_random, 'Random':today_rand})
     rand = pd.DataFrame(get_data_input(), columns = ['Tanggal', 'Random'])
-    rand.tail(1).to_csv('rand1.csv', mode='a', index = False, header = False)
+    rand.tail(1).to_csv('rand2.csv', mode='a', index = False, header = False)
 
 st.markdown("----", unsafe_allow_html=True)
-df = pd.read_csv('rand1.csv')
+df = pd.read_csv('rand2.csv')
 st.write(df)
     
 hide_streamlit_style = """
