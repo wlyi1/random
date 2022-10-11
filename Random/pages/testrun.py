@@ -5,8 +5,7 @@ import os
 
 st.markdown("# Run Query")
 sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
-#db_filename = st.selectbox('DB Filename', sqlite_dbs)
-db_filename = 'rd1.db'
+db_filename = st.selectbox('DB Filename', sqlite_dbs)
 
 query = st.text_area("SQL Query", height=100)
 conn = create_connection(db_filename)
