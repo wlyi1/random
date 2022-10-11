@@ -87,7 +87,8 @@ with st.form("my_form"):
         user_.append({'Tanggal Random': tgl_random, 'Nama':nama, 'Input':cerita})
         user = pd.DataFrame(user_)
         user.tail(1).to_csv('user_out.csv', mode='a', index = False, header = False)
-
+us = pd.read_csv('user_out.csv')        
+st.write(us)
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
