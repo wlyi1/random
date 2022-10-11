@@ -9,6 +9,7 @@ from datetime import datetime as dt
 from io import BytesIO
 import requests
 import urllib.request
+from csv import writer
 
 def _font_as_bytes():
     with open('https://raw.githubusercontent.com/wlyi1/random/main/Random/Quicksand-Regular.ttf', 'rb') as f:
@@ -57,16 +58,19 @@ img.text((80,470), today_rand, font=font, fill=(0,0,0))
 img.text((450,390), hari, font=font1, fill=(0,0,0))
 
 data ='https://raw.githubusercontent.com/wlyi1/random/main/Random/rand1.csv'
-
+st.write(randoms.csv')
 if button_pressed:
     st.image(image3)
-    get_data_input().append({'Tanggal Random': tgl_random, 'Random':today_rand})
-    rand = pd.DataFrame(get_data_input())
-    rand.tail(1).to_csv('rando.csv', mode='a', index = False, header = True)
+    List = get_data_input().append(tgl_random, today_rand)
+    with open('event.csv', 'a') as f_object:
+         writer_object = writer(f_object)
+         writer_object.writerow(List)
+         f_object.close()
+
 
 st.markdown("----", unsafe_allow_html=True)
 
-df1 = pd.read_csv('rando.csv')
+df1 = pd.read_csv('randoms.csv')
 df = pd.DataFrame(df1)
 st.write(df)
 #df.columns = ['Tanggal', 'Random']
