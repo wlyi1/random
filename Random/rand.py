@@ -67,7 +67,7 @@ if button_pressed:
 st.markdown("----", unsafe_allow_html=True)
 
 df1 = pd.read_csv('randoms.csv')
-df = pd.DataFrame(df1, names=['Tanggal', 'Random']
+df = pd.DataFrame(df1, names=['Tanggal', 'Random'])
 st.write(df.Random[1])
 st.header('3 Aktivitas Random Terakhir')
 st.caption('tiga list random oleh 3 pengunjung terakhir di RandomKu')
