@@ -66,7 +66,7 @@ if button_pressed:
 
 st.markdown("----", unsafe_allow_html=True)
 
-df = pd.read_csv('randoms.csv', names=['Tanggal', 'Random'])
+df = pd.read_csv('randoms.csv', columns=['Tanggal', 'Random'])
 st.write(df)
 st.header('3 Aktivitas Random Terakhir')
 st.caption('tiga list random oleh 3 pengunjung terakhir di RandomKu')
@@ -87,6 +87,7 @@ with st.form("my_form"):
         user_.append({'Tanggal Random': tgl_random, 'Nama':nama, 'Input':cerita})
         user = pd.DataFrame(user_)
         user.tail(1).to_csv('user_out.csv', mode='a', index = False, header = False)
+        
 us = pd.read_csv('user_out.csv')        
 st.write(us)
 hide_streamlit_style = """
