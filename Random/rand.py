@@ -1,55 +1,40 @@
 import streamlit as st
-import pandas as pd 
+import pandas as pd
 import random
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 import datetime
 from datetime import datetime as dt
+from deta import Deta
+import pandas as pd
 from io import BytesIO
 import requests
 import urllib.request
-from csv import writer
 
 def _font_as_bytes():
     with open('https://raw.githubusercontent.com/wlyi1/random/main/Random/Quicksand-Regular.ttf', 'rb') as f:
         font_bytes = BytesIO(f.read())
     return font_bytes
-#response = requests.get(url)
-#img = Image.open(BytesIO(response.content))
 
 resp = requests.get('https://raw.githubusercontent.com/wlyi1/random/main/Random/dw.png')
-#image1 = Image.open('a2.png')
 image3 = Image.open(BytesIO(resp.content))
 
-image1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a2.png'
+#Data Sources
+data = pd.read_csv('rand_aktivitas.csv')
 image2 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a3a.png'
-#image3 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/dw.png'
-image4 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/1.png'
-image5 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/2.png'
-
+image1 = 'https://raw.githubusercontent.com/wlyi1/random/main/Random/a2.png'
 st.image(image1)
 st.image(image2)
+#stwrite
 
-
-list_rand = ['menghitung jumlah ubin', 'push-up 10 x', 'bayarin temen makan', 'mencuci sandal', 'gambar karakter anime']
-today_rand = random.choice(list_rand)
-
-st.markdown("----", unsafe_allow_html=True)
-columns = st.columns((2, 1, 2))
-button_pressed = columns[1].button('Random Me!')
-
-
-#download page
-@st.cache(allow_output_mutation=True)
-def get_data_input():
-    return[]
-
+list_rand = data.name
 tgl_random = datetime.datetime.now()
-
+tgl = tgl_random.strftime("%m/%d/%Y, %H:%M:%S")
+today_rand = random.choice(list_rand)
 hari = dt.today().strftime('%Y-%m-%d')
-path_font = "Random/Quicksand-Regular.ttf"
-path_font_2 = 'Random/Quicksand-Bold.ttf'
+path_font = "Quicksand-Regular.ttf"
+path_font_2 = 'Quicksand-Bold.ttf'
 font = ImageFont.truetype(path_font, 55)
 font1 = ImageFont.truetype(path_font_2, 28)
 
@@ -57,52 +42,41 @@ img= ImageDraw.Draw(image3)
 img.text((80,470), today_rand, font=font, fill=(0,0,0))
 img.text((450,390), hari, font=font1, fill=(0,0,0))
 
-data ='https://raw.githubusercontent.com/wlyi1/random/main/Random/rand1.csv'
-st.write('randoms.csv')
-if button_pressed:
+
+# Connect to Deta Base with your Project Key
+deta = Deta(st.secrets["project_key"])
+
+# Create a new database "example-db sss"
+# If you need a new database, just use another name.
+db = deta.Base("random")
+
+if st.button('Show'):
     st.image(image3)
-    List = get_data_input()
-    #List.append(tgl_random, today_rand)
-    with open('randoms.csv', 'a') as f_object:
-         writer_object = writer(f_object)
-         writer_object.writerow(tgl_random, today_rand, '1', '2')
-         f_object.close()
+    db.put({'Tanggal' : tgl, 'Random' : today_rand})
 
 
-st.markdown("----", unsafe_allow_html=True)
+# Data to be written to Deta Base of Cerita
+db1 = deta.Base('Cerita')
 
-df1 = pd.read_csv('randoms.csv')
-df = pd.DataFrame(df1)
-st.write(df)
-#df.columns = ['Tanggal', 'Random']
-st.write(df['Random'])
-st.write(df.Random[1])
-st.header('3 Aktivitas Random Terakhir')
-st.caption('tiga list random oleh 3 pengunjung terakhir di RandomKu')
-
-st.info(df['Random'][len(df)-1])
-st.success(df['Random'][len(df)-2])
-st.warning(df['Random'][len(df)-3])
-    
 with st.form("my_form"):
     st.write("Ceritain ke RandomKu dong tentang aktivitas randommu hari ini 😃")
-    nama = st.text_input("Nama kakak? ")
+    nama = st.text_input("Namanya? ")
+    age = st.number_input('Umurnya? ', min_value=5, max_value=70)
     cerita = st.text_input("Cerita singkatnya gimana nih?")
-
-   # Every form must have a submit button.
     submitted = st.form_submit_button("Submit")
-    if submitted:
-        user_ = get_data_input()
-        user_.append({'Tanggal Random': tgl_random, 'Nama':nama, 'Input':cerita})
-        user = pd.DataFrame(user_)
-        user.tail(1).to_csv('user_out.csv', mode='a', index = False, header = False)
-        
-us = pd.read_csv('user_out.csv')        
-st.write(us)
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# If the user clicked the submit button. write the data from the form to the database.
+# You can store any data you want here. Just modify that dictionary below (the entries between the {}).
+
+if submitted:
+    db1.put({"Nama": nama, 'Umur' : age, "Cerita": cerita})
+
+st.write('Test Your Knowledge')
+
+db_content = db.fetch().items
+st.write(db_content)
+df = pd.DataFrame(db_content)
+st.write(df)
+#st.write(df['Random'][0])
+
+
